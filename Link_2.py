@@ -44,6 +44,9 @@ class LinkedList2:
                     self.head = node.next
                     del_node.next = None
                     del_node = None
+                    node = self.head
+                    if node is not None:
+                        node.prev = None
                     break
                 elif node.value == val and node != self.tail:
                     prev_node.next = node.next
@@ -61,6 +64,7 @@ class LinkedList2:
                     node.next = None
                     node = None
                     self.tail = prev_node
+                    del_node = None
                     break
                 prev_node = node
                 node = node.next
