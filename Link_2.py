@@ -40,7 +40,13 @@ class LinkedList2:
         if not all:
             while node is not None:
                 del_node = node
-                if node.value == val and node == self.head:
+                if node.value == val and node == self.tail and node == self.head:
+                    self.head = None
+                    self.tail = None
+                    node = None
+                    del_node = None
+                    break
+                elif node.value == val and node == self.head:
                     self.head = node.next
                     del_node.next = None
                     del_node = None
@@ -57,7 +63,6 @@ class LinkedList2:
                     del_node.next = None
                     del_node = None
                     break
-                    
                 elif node.value == val and node == self.tail:
                     prev_node.next = None
                     node.prev = None
